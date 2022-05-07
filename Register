@@ -1,0 +1,96 @@
+'''
+Joel Tejeda
+Python 
+Register
+'''
+days = ["monday","tuesday","wednesday","thursday","friday"]
+manager_pw= '1234'
+def main():
+    name, date_day = login()
+    print("Ready for customer!\n")
+    sale = 'y'
+    cash_register = 0
+    
+    while sale == 'y':
+        cash_register += register(date_day)
+        sale = input("Is there another customer(y/n)? \n").lower()
+    print("Todays total is ",cash_register,".")
+    
+        
+        
+        
+    
+    
+
+        
+
+#login with name and date     
+def login():
+    while True:
+        name= input("Hello, who is running the register? \n")
+        date_day = input("Enter the day of the week \n").lower()
+        while date_day not in days:
+            date_day = input("Invalid input! Enter the day of the week \n").lower()
+        date_number = input("Enter the date \n").lower()
+        
+        
+            
+        print("Hello",name,". You entered "+date_day+" "+date_number+".")
+        answer = input("Is this correct?(y/n): \n").lower()
+        #Data Validation
+        while answer != "y" and answer != "n":
+            answer = input("Invalid response. Is this correct?(y/n) \n").lower()
+        #Allows user to correct themselves if they misspelled something or continue
+        if answer == 'n':
+            continue
+        elif answer == 'y':
+            print("Login Successful.\n")
+            return name, date_day
+        
+          
+            
+        
+#register
+def register(date_day):
+    total = 0
+    while True:
+        cost = eval(input("Enter the cost of the item or type 0 to exit or -1 to void an item. \n"))
+        #Data  Validation
+        while cost <-1:
+            item = eval(input("Invalid response. Enter the cost of the item or 0 to exit or -1 to void \n "))
+        if cost == 0:
+            break
+        #Manager void
+        elif cost == -1:
+            total -= manager()
+        total += cost
+    
+    total = coupon(date_day, total)
+    #rare event, -1 with voiding whole transaction
+    if total <0:
+        total = 0
+    print("The total for this transaction is ",total,"\n")
+    return total
+
+#Discount for the day in the week
+def coupon(date_day,total):
+    if date_day ==  'tuesday':
+        print("Hey, there is a 25 % storewide discount for all customers at checkout on today.\n")
+        total -= .25 * total
+    
+    return total
+#Manager void
+def manager():
+    void = input("Enter the Managers passsword or x to exit \n")
+    while void != manager_pw and void != 'x':
+        void = input("Invalid response! Enter the Managers passsword or x to exit \n")
+    if void == 'x':
+        return 0
+    else:
+        return eval(input("Enter the amount that is voided \n"))
+        
+    
+    
+        
+        
+main()
