@@ -1,0 +1,63 @@
+/* 
+	Joel Tejeda
+	C++
+	This program displays a label for a given item
+*/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main (void)
+{
+// Local Declarations
+	double upc_code; // Declares upc_code as a double variable
+	double weight; // Declares weight as a double variable
+	double price_per_pound; // Declares price_per_pound as a double variable
+	double cost; // Delcares total as a double variable 
+	double tax_total; //Delcares tax_total as a double variable 
+	double total; // Declares total as a double variable
+	
+	
+	
+//Program statements 
+	cout << "Enter the UPC code of the item." << endl;// Prompting the user 
+	
+	// Inputing the information of the product
+		cin >> upc_code ;
+		cout << "Enter the weight of the item." << endl;
+		cin >> weight ;
+		cout << "Enter the price per pound of the item." <<endl;
+		cin >> price_per_pound ;
+		
+	
+	
+	cost = weight  * price_per_pound ; // Formula for the untaxed total
+	tax_total = 0.06 * cost ; // Formula for tax amount 
+	total = tax_total + cost ; // Formula for total amount including tax
+	
+
+	cout << "This is the label for the item\n" << endl; // Information for the user 
+	
+	//Formating the Begining of the label
+		cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+		cout << "\t Sigel Superior Supermarket" << endl;
+		cout << setw(30) << "Cheese Department\n" << endl;
+		
+	//Formating the label with the information given
+		cout << "UPC CODE" << setw(12) << "WEIGHT" << setw(13)<< "COST/LB" << endl 
+		<< upc_code << setw(11) << weight << " LB" << setw(8) << "$" << price_per_pound << "\n" << endl
+		<< setw(11) << "Cost: " << setw(9) << fixed << setprecision(2) << "$ "<< cost << endl
+		<< setw(10) << "Tax: " << setw(11) << fixed << setprecision(2) << "$ " << tax_total << endl
+		<< setw(26) << "==========\n"
+		<< setw(15) << "Total Cost" << setw(5) << fixed << "$ " << setprecision(2) << total << "\n" << endl;
+		
+	//Formating the ending of the label
+		cout << setw(25) << "Thank you!" <<endl;
+		cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+		
+		
+		
+//End program 
+	return 0;
+}
