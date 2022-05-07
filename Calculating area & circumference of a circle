@@ -1,0 +1,37 @@
+/* 
+	Joel Tejeda
+	C++
+	This program calulates the area and the circumference of a circle
+*/ 
+
+#include <iostream>
+using namespace std;
+int main(void)
+{
+//local declarations
+	double radius; // Declares radius as a double variable 
+	double area; // Declares area as a double variable
+	double circumference; // Declares circumference as a double variable
+	const float PI = 3.1416; // Declares PI as a constant float variable
+		
+//Program statements
+	cout << "Please enter the radius of a circle: "; //Prompting the user
+	cin >> radius  ; //Inputting the radius of the circle 
+	
+//Formulas for calculations
+	circumference = 2 * PI * radius ; 
+	area = PI * radius * radius ; 
+	
+//Formating The output
+	cout << "\n***********************************" << endl;  
+	cout << "Area and Circumference of a circle" << endl; 
+	cout << "***********************************" << endl;  
+	
+// Displaying the calculations 
+	cout << "Radius= " << radius << endl; 
+	cout << "Area= "<< area << endl;  
+	cout << "Circumference= " << circumference<< endl;  
+	
+//End of program	
+	return 0;
+}
