@@ -1,0 +1,99 @@
+/*
+	Joel Tejeda
+	C++
+	This program analyzes a families data in the budget assistance center. 
+	It will include the familes ID number, number in family, income, and total debts.
+*/
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main(void)
+{
+// Local declarations
+	int iden ; // Declares iden as a integer
+	int num_family ; // Declares num_family as a integer 
+	float income ; // Declares income as a floating variable
+	float total_debt ; //Declares total_debt as a floating variable
+	double const service_fee1 = 0.01  ; //Declares serivonce_fee1 as a double variable
+	double const service_fee2 = 0.02  ; //Declares service_fee2 as a double variable
+	float const living_expense1 = 4500.50 ; //Declares living_expense1 as a constant floating variable
+	float const living_expense2 = 4700.30 ; //Declares living_expense2 as a constant floating variable
+	float const living_expense3 = 5000.00 ; //Declares living_expense3 as a constant floating vairable
+	float total_living_expense; //Declares total_living_expense as a floating variable
+	float total_service_fee ; //Declares total_service_fee as a floating variable
+	float monthly_payment ; //Declares monthly payment as a floating variable
+	float savings ; //Declares savings as a floating variable 
+	float debt ; //Delclares debt1 as a floating variable
+
+	
+//Program statements
+
+
+	//Formating the numbers to look presentable
+	cout << setiosflags (ios::fixed)
+	 	 << setiosflags (ios::showpoint)
+	 	 << setprecision(2) ;
+	 	 
+	//Intputing the information of the families
+		cout << "Please enter the family ID number from your family: " ;
+		cin >> iden ; 
+		cout << "Please enter the number of people in the family: ";
+		cin >> num_family ;
+		cout << "Please enter the income of the family as a whole: ";
+		cin >> income ;
+		cout << "Please enter the total debt for your family: ";
+		cin >> debt ;
+		
+		
+	
+		
+	//Calculating the Information for living expenses
+		if (num_family < 4) 
+			total_living_expense = living_expense3 * num_family; //5000$ 
+		else if (num_family > 4)
+			total_living_expense = living_expense1 * num_family; //4500.50$
+		else if (num_family = 4)
+		total_living_expense = living_expense2 * num_family; //4700.30$
+
+	
+	//Calcualting how long the family will take to pay off the debt
+	
+		if (debt > 4000)
+			monthly_payment = debt/12;
+		else if (debt <= 4000)
+			monthly_payment = debt/6 ;
+	
+	// Calcualting the savings
+		savings = num_family * 0.02 *(income-debt) ;
+		
+	//Calcualting the service fee
+	
+		if (income <= 30000) 
+			total_service_fee = service_fee1 * income;
+		else if (income > 30000) 
+			total_service_fee = service_fee2 * income ;
+	
+	
+	// Formating the charts
+		cout << "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+		cout << "\t Family Budget Assistance Center" << endl;
+		cout << setw(30) << "November 2021" << endl;
+		cout << "\t Telephone    (800)-555-1234" << endl;
+		cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n" << endl;
+		
+	// Information on the family
+		cout << "Identification number:"<< setw(20) << iden<< endl;
+		cout << "Family size:"<< setw(30) << num_family<< endl;
+		cout << "Annual income:"<< setw(31) << income<< endl;
+		cout << "Total Debt:"<<setw(34) << debt<< endl;
+		cout << "Expected Living Expenses:"<< setw(20) << total_living_expense<< endl;
+		cout << "Monthly Payment:"<< setw(29) << monthly_payment <<endl;
+		cout << "Savings:"<< setw(37) << savings<< endl;
+		cout << "Service Fee:"<< setw(33) << total_service_fee << endl ;
+	
+
+return 0;
+}
